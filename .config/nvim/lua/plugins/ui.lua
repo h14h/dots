@@ -106,7 +106,7 @@ return {
 	{
 		"saghen/blink.cmp",
 		lazy = false,
-		version = "*",
+		build = "cargo build --release",
 		config = true,
 		opts = {
 			-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
