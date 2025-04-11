@@ -30,30 +30,6 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
-
-			{
-				"saghen/blink.cmp",
-				lazy = false,
-				build = "cargo build --release",
-				config = true,
-				opts = {
-					-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-					keymap = {
-						preset = "enter",
-						["<S-Tab>"] = { "select_prev", "fallback" },
-						["<Tab>"] = { "select_next", "fallback" },
-					},
-					sources = {
-						providers = {
-							codecompanion = {
-								name = "CodeCompanion",
-								module = "codecompanion.providers.completion.blink",
-								enabled = true,
-							},
-						},
-					},
-				},
-			},
 		},
 	},
 }

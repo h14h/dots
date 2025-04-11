@@ -9,9 +9,20 @@ return {
 				transparent_mode = true,
 			})
 
+			-- Re-apply icon highlights
+			require("nvim-web-devicons").setup()
+
 			-- Set the colorscheme
 			vim.cmd("colorscheme gruvbox")
 		end,
+	},
+	{ -- Apply colorscheme to devicons
+		"rachartier/tiny-devicons-auto-colors.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		event = "VeryLazy",
+		config = true,
 	},
 	{ -- Gitgutter symbols
 		"lewis6991/gitsigns.nvim",

@@ -14,14 +14,14 @@ require("core.lazy")
 
 require("lazy").setup({
 	"tpope/vim-sleuth",
+	"tpope/vim-fugitive",
 	{ import = "plugins" },
 
 	---@diagnostic disable-next-line: missing-fields
 }, {
 	ui = {
-		border = "single",
+		border = "rounded",
 	},
 })
 
--- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

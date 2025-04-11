@@ -1,4 +1,6 @@
-vim.lsp.config.lua_ls = {
+local configs = {}
+
+configs.lua_ls = {
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
 	log_level = 2,
@@ -21,7 +23,105 @@ vim.lsp.config.lua_ls = {
 	},
 }
 
-vim.lsp.config.denols = {
+configs.astro_ls = {
+	cmd = { "astro-ls", "--stdio" },
+	filetypes = { "astro" },
+	root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
+	init_options = {
+		typescript = {
+			tsdk = (function()
+				local root_dir = vim.fs.root(0, { "package.json", "tsconfig.json", "jsconfig.json" })
+				return root_dir and root_dir .. "/node_modules/typescript/lib" or ""
+			end)(),
+		},
+	},
+}
+
+configs.tailwind_ls = {
+	cmd = { "tailwindcss-language-server", "--stdio" },
+	filetypes = {
+		"aspnetcorerazor",
+		"astro",
+		"astro-markdown",
+		"blade",
+		"clojure",
+		"django-html",
+		"htmldjango",
+		"edge",
+		"eelixir",
+		"elixir",
+		"ejs",
+		"erb",
+		"eruby",
+		"gohtml",
+		"gohtmltmpl",
+		"haml",
+		"handlebars",
+		"hbs",
+		"html",
+		"htmlangular",
+		"html-eex",
+		"heex",
+		"jade",
+		"leaf",
+		"liquid",
+		"markdown",
+		"mdx",
+		"mustache",
+		"njk",
+		"nunjucks",
+		"php",
+		"razor",
+		"slim",
+		"twig",
+		"css",
+		"less",
+		"postcss",
+		"sass",
+		"scss",
+		"stylus",
+		"sugarss",
+		"javascript",
+		"javascriptreact",
+		"reason",
+		"rescript",
+		"typescript",
+		"typescriptreact",
+		"vue",
+		"svelte",
+		"templ",
+	},
+	root_markers = { ".tailwind" },
+	settings = {
+		tailwindCSS = {
+			validate = true,
+			lint = {
+				cssConflict = "warning",
+				invalidApply = "error",
+				invalidScreen = "error",
+				invalidVariant = "error",
+				invalidConfigPath = "error",
+				invalidTailwindDirective = "error",
+				recommendedVariantOrder = "warning",
+			},
+			classAttributes = {
+				"class",
+				"className",
+				"class:list",
+				"classList",
+				"ngClass",
+			},
+			includeLanguages = {
+				eelixir = "html-eex",
+				eruby = "erb",
+				templ = "html",
+				htmlangular = "html",
+			},
+		},
+	},
+}
+
+configs.deno_ls = {
 	cmd = { "deno", "lsp" },
 	cmd_env = { NO_COLOR = true },
 	filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
@@ -34,7 +134,7 @@ vim.lsp.config.denols = {
 	end,
 }
 
-vim.lsp.config.ts_ls = {
+configs.ts_ls = {
 	cmd = { "typescript-language-server", "--stdio" },
 	filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
 	root_dir = function(_, callback)
@@ -47,8 +147,40 @@ vim.lsp.config.ts_ls = {
 	end,
 }
 
-local servers = { "lua_ls", "ts_ls", "denols" }
+configs.biome_ls = {
+	cmd = { "biome", "lsp-proxy" },
+	filetypes = {
+		"astro",
+		"css",
+		"graphql",
+		"javascript",
+		"javascriptreact",
+		"json",
+		"jsonc",
+		"svelte",
+		"typescript",
+		"typescript.tsx",
+		"typescriptreact",
+		"vue",
+	},
+	root_dir = function(_, callback)
+		local root_dir = vim.fs.root(0, { "biome.json", "biome.jsonc" })
 
-for _, server_name in pairs(servers) do
-	vim.lsp.enable(server_name)
+		if root_dir then
+			callback(root_dir)
+		end
+	end,
+	single_file_support = false,
+}
+
+configs.pg_ls = {
+	cmd = { "postgrestools", "lsp-proxy" },
+	filetypes = { "sql" },
+}
+
+for server, config in pairs(configs) do
+	vim.lsp.config[server] = config
+	vim.lsp.enable(server)
 end
+
+-- vim: ts=2 sts=2 sw=2 et

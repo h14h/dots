@@ -38,10 +38,10 @@ return {
 
 				-- You can use 'stop_after_first' to run the first available formatter from the list
 				json = { "prettierd", "prettier", "biome", stop_after_first = true },
-				javascript = { "prettierd", "prettier", "biome", stop_after_first = true },
-				typescript = { "prettierd", "prettier", "biome", stop_after_first = true },
-				javascriptreact = { "prettierd", "prettier", "biome", stop_after_first = true },
-				typescriptreact = { "prettierd", "prettier", "biome", stop_after_first = true },
+				javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
+				typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
+				javascriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
+				typescriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
 				astro = { "prettierd", "prettier", "biome", stop_after_first = true },
 			},
 		},
