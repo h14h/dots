@@ -175,6 +175,7 @@ return {
 					},
 					popupmenu = { enabled = false },
 					mini = {
+						timeout = 6174,
 						position = { row = -1 },
 						win_options = {
 							winhighlight = { Normal = "GruvboxHard" },
