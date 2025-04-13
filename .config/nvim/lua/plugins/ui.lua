@@ -109,8 +109,7 @@ return {
 		build = "cargo build --release",
 		config = true,
 		opts = {
-			-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-			keymap = { preset = "enter" },
+			keymap = { preset = "default" },
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 			completion = {
 				documentation = {
