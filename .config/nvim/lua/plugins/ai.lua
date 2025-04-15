@@ -1,7 +1,6 @@
 return {
 	{
 		"olimorris/codecompanion.nvim",
-		config = true,
 		opts = {
 			adapters = {
 				gemini = function()
@@ -34,10 +33,15 @@ return {
 			},
 			display = {
 				action_palette = {
-					provider = "mini_pick",
+					provider = "telescope",
 				},
 			},
 		},
+		config = function(opts)
+			require("codecompanion").setup(opts)
+
+			vim.keymap.set("n", "<leader>ai", ":CodeCompanionActions<CR>", { desc = "Open [A][I] Actions Panel" })
+		end,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
