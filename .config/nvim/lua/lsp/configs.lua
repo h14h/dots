@@ -176,6 +176,7 @@ configs.biome_ls = {
 configs.pg_ls = {
 	cmd = { "postgrestools", "lsp-proxy" },
 	filetypes = { "sql" },
+	root_markers = { "seed.sql " },
 }
 
 for server, config in pairs(configs) do

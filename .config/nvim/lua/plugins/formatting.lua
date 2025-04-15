@@ -43,6 +43,7 @@ return {
 				javascriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
 				typescriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
 				astro = { "prettierd", "prettier", "biome", stop_after_first = true },
+				sql = { "sqruff", stop_after_first = true },
 			},
 		},
 	},
