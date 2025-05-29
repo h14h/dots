@@ -15,3 +15,4 @@ I'm rewriting my dotfiles to take advantage of GNU Stow.
 - [ ] Add Ghostty config (doubt I'll switch terminals)
 - [ ] Upgrade to neovim v0.11 and remove duplicative plugins
 - [ ] Figure out a Nerd Font installation solution (Geist Mono NF)
+- [ ] Add an rc file for my chosen shell (including RIPGREP_CONFIG_PATH)
